@@ -29,3 +29,17 @@ export default resolver.pipe(
     }
   }
 )
+
+// import { resolver } from "@blitzjs/rpc";
+// import db from "db";
+
+// export default resolver.pipe(
+//   resolver.authorize(), // Ensure authorization
+//   async () => {
+//     // Call the stored procedure using Prisma's $queryRaw
+//     const question = await db.$queryRaw`
+//       CALL GetQuestions();
+//     `;
+//     return question; // Return the result from the stored procedure
+//   }
+// );

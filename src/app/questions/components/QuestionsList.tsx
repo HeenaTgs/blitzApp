@@ -6,6 +6,7 @@ import getQuestions from "../queries/getQuestions"
 import { useSearchParams } from "next/navigation"
 import { usePathname } from "next/navigation"
 import { Route } from "next"
+import axios from "axios"
 
 const ITEMS_PER_PAGE = 100
 
@@ -31,6 +32,24 @@ export const QuestionsList = () => {
     router.push((pathname + "?" + params.toString()) as Route)
   }
 
+  const handleFileUpload = async (event) => {
+    try {
+      const file = event.target.files[0]
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await axios.post("/api/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+
+      console.log("Upload successful:", response.data)
+    } catch (error) {
+      console.error("Upload error:", error)
+    }
+  }
+
   return (
     <div>
       <ul>
@@ -47,6 +66,7 @@ export const QuestionsList = () => {
       <button disabled={!hasMore} onClick={goToNextPage}>
         Next
       </button>
+      <input type="file" onChange={handleFileUpload} />
     </div>
   )
 }

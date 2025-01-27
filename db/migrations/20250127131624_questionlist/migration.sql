@@ -1,0 +1,4 @@
+CREATE PROCEDURE GetQuestions()
+BEGIN
+  SELECT * FROM question;
+END
