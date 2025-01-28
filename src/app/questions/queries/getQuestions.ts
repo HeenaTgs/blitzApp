@@ -33,6 +33,8 @@ export default resolver.pipe(
 // import { resolver } from "@blitzjs/rpc";
 // import db from "db";
 
+// Call the stored procedure
+
 // export default resolver.pipe(
 //   resolver.authorize(), // Ensure authorization
 //   async () => {
@@ -41,5 +43,31 @@ export default resolver.pipe(
 //       CALL GetQuestions();
 //     `;
 //     return question; // Return the result from the stored procedure
+//   }
+// );
+
+// Call the database function
+
+// export default resolver.pipe(
+//   resolver.authorize(),
+//   async ({ number }: { number: number }) => {
+//     const result = await db.$queryRaw`
+//       SELECT SquareNumber(${number}) AS squared;
+//     `;
+
+//     return result[0]; // Return the result
+//   }
+// );
+
+// api calling using common api
+// import { resolver } from "@blitzjs/rpc";
+// import { fetchQuestions } from "@/src/utils/dbUtils";
+
+// export default resolver.pipe(
+//   resolver.authorize(), // Ensure authorization
+//   async () => {
+//     const questions = await fetchQuestions(); // Use the reusable function
+//     console.log('Questions from Resolver 1:', questions);
+//     return questions;
 //   }
 // );

@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Suspense } from "react"
 import { QuestionsList } from "./components/QuestionsList"
+import Common from "../components/Common"
 
 export const metadata: Metadata = {
   title: "Questions",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <Common />
       <p>
         <Link href={"/questions/new"}>Create Question</Link>
       </p>
